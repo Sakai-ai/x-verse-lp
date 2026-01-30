@@ -10,6 +10,7 @@
         "sync:logi": "cd logi && npm run sync",
         "build:logi": "cd logi && npm run build",
         "build:top": "cd top && npm run build",
-        "build": "npm run build:logi && npm run sync:logi && npm run build:top"
+        "build": "npm run build:logi && npm run sync:logi && npm run build:top",
+        "postbuild": "powershell -Command \"if (Test-Path dist) { Remove-Item -Recurse -Force dist }; New-Item -ItemType Directory -Force dist; Copy-Item -Recurse -Force top/public/* dist/\""
     }
 }
