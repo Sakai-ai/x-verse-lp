@@ -15,6 +15,10 @@
     --color-cyber-teal: #ef4444;
     /* Secondary / Gradient Red */
     --color-metallic-silver: #94A3B8;
+    /* X-VERSE Brand Red (from logo #9d2124) */
+    --color-xverse-red: #9d2124;
+    --color-xverse-red-light: #b52a2e;
+    --color-xverse-red-dark: #7a191c;
 }
 
 @import "../../../shared/src/css/main.css";
