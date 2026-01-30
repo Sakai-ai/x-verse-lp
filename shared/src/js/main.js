@@ -166,4 +166,65 @@ document.addEventListener('DOMContentLoaded', () => {
             window.requestAnimationFrame(step);
         });
     }
+
+
+    // Typewriter Effect for Platform Code
+    const codeContainer = document.getElementById('code-typewriter');
+    if (codeContainer) {
+        const codeText = `// Initialize X-VERSE Engine
+const xverse = new XVerse({
+  mode: 'digital_twin',
+  sync: 'realtime',
+  modules: ['BIM', 'IoT', 'PointCloud']
+});
+
+// Connect to Data Lake
+await xverse.connect();
+
+// Render 3D Environment
+xverse.render('#app');
+
+console.log('Ready to Optimize');`;
+
+        const typeWriterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    startTypewriter(codeContainer, codeText);
+                    typeWriterObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        typeWriterObserver.observe(codeContainer);
+    }
+
+    function startTypewriter(element, text) {
+        let i = 0;
+        element.innerHTML = '';
+        const speed = 30; // ms per char
+
+        function type() {
+            if (i < text.length) {
+                // Simple syntax highlighting support could be added here
+                // For now, just preserving formatting
+                let char = text.charAt(i);
+
+                // Handle newlines
+                if (char === '\n') {
+                    element.innerHTML += '<br>';
+                } else if (char === ' ') {
+                    element.innerHTML += '&nbsp;';
+                } else {
+                    element.innerHTML += `<span class="text-emerald-400">${char}</span>`;
+                }
+
+                i++;
+                setTimeout(type, speed);
+            } else {
+                // blink cursor at end
+                element.innerHTML += '<span class="animate-pulse">_</span>';
+            }
+        }
+        type();
+    }
 });
