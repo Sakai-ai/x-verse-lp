@@ -1,0 +1,11 @@
+{
+    "buildCommand": "npm run build",
+    "outputDirectory": "top/public",
+    "framework": null,
+    "rewrites": [
+        {
+            "source": "/logi/(.*)",
+            "destination": "/logi/$1"
+        }
+    ]
+}

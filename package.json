@@ -5,5 +5,11 @@
         "logi",
         "shared",
         "top"
-    ]
+    ],
+    "scripts": {
+        "sync:logi": "cd logi && npm run sync",
+        "build:logi": "cd logi && npm run build",
+        "build:top": "cd top && npm run build",
+        "build": "npm run build:logi && npm run sync:logi && npm run build:top"
+    }
 }
