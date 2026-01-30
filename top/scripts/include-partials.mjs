@@ -1,4 +1,4 @@
-import { readFile, writeFile } from "node:fs/promises";
+import { readFile, writeFile, mkdir, copyFile } from "node:fs/promises";
 import path from "node:path";
 
 const root = process.cwd();
@@ -10,22 +10,23 @@ const headerPartials = {
   inner: "header-inner.html",
 };
 
+// Use local footer now
 const footerPartials = {
-  shared: "footer.html",
+  local: "footer.html",
 };
 
 const targets = [
-  { file: "public/index.html", header: "root", footer: "shared", baseUrl: "./" },
-  { file: "public/company/index.html", header: "inner", footer: "shared", baseUrl: "../" },
-  { file: "public/contact/index.html", header: "inner", footer: "shared", baseUrl: "../" },
-  { file: "public/contact/thanks.html", header: "inner", footer: "shared", baseUrl: "../" },
-  { file: "public/privacy/index.html", header: "inner", footer: "shared", baseUrl: "../" },
-  { file: "public/terms/index.html", header: "inner", footer: "shared", baseUrl: "../" },
+  { file: "public/index.html", header: "root", footer: "local", baseUrl: "./" },
+  { file: "public/company/index.html", header: "inner", footer: "local", baseUrl: "../" },
+  { file: "public/contact/index.html", header: "inner", footer: "local", baseUrl: "../" },
+  { file: "public/contact/thanks.html", header: "inner", footer: "local", baseUrl: "../" },
+  { file: "public/privacy/index.html", header: "inner", footer: "local", baseUrl: "../" },
+  { file: "public/terms/index.html", header: "inner", footer: "local", baseUrl: "../" },
 ];
 
 const headerRegex = /<!-- Header -->[\s\S]*?<\/header>/m;
 const footerRegex = /<footer[\s\S]*?<\/footer>/m;
-const cssRegex = /<link rel="stylesheet" href="[^"]*css\/output\.css">/g;
+const cssRegex = /<link [^>]*href="[^"]*css\/output\.css"[^>]*>/g;
 const assetRegex = /(src|href|content)="(\.\.\/)*assets\//g;
 const faviconRegex = /href="(\.\.\/)*favicon\.svg"/g;
 
@@ -35,7 +36,7 @@ const readPartial = async (name, isShared = false) => {
   return readFile(filePath, "utf8");
 };
 
-const replaceHeader = async ({ file, header }) => {
+const replaceHeader = async ({ file, header, baseUrl }) => {
   const filePath = path.join(root, file);
   const html = await readFile(filePath, "utf8");
   const partialName = headerPartials[header];
@@ -43,7 +44,17 @@ const replaceHeader = async ({ file, header }) => {
     throw new Error(`Unknown header key: ${header}`);
   }
 
-  const headerHtml = await readPartial(partialName);
+  let headerHtml = await readPartial(partialName);
+
+  // ROOT_URL for Top project is same as BASE_URL
+  const rootUrl = baseUrl;
+
+  // Replace placeholders
+  if (baseUrl) {
+    headerHtml = headerHtml.replace(/\{\{BASE_URL\}\}/g, baseUrl);
+    headerHtml = headerHtml.replace(/\{\{ROOT_URL\}\}/g, rootUrl);
+  }
+
   if (!headerRegex.test(html)) {
     throw new Error(`Header block not found in ${file}`);
   }
@@ -57,18 +68,14 @@ const replaceFooter = async ({ file, footer, baseUrl }) => {
   const filePath = path.join(root, file);
   const html = await readFile(filePath, "utf8");
 
-  const isShared = footer === "shared";
+  // Always use local footer now
   const partialName = footerPartials[footer];
   if (!partialName) {
     throw new Error(`Unknown footer key: ${footer}`);
   }
 
-  let footerHtml = await readPartial(partialName, isShared);
-
-  // Replace base URL placeholder
-  if (baseUrl) {
-    footerHtml = footerHtml.replace(/\{\{BASE_URL\}\}/g, baseUrl);
-  }
+  // FORCE LOCAL READ
+  let footerHtml = await readPartial(partialName, false);
 
   if (!footerRegex.test(html)) {
     throw new Error(`Footer block not found in ${file}`);
@@ -86,8 +93,32 @@ const replaceFooter = async ({ file, footer, baseUrl }) => {
   await writeFile(filePath, finalHtml, "utf8");
 };
 
+const syncSharedAssets = async () => {
+  const publicShared = path.join(root, "..", "shared", "public");
+  const jsShared = path.join(root, "..", "shared", "src", "js");
+
+  // Ensure target dirs exist
+  await mkdir(path.join(root, "public", "js"), { recursive: true });
+
+  // Sync favicon.svg
+  await copyFile(path.join(publicShared, "favicon.svg"), path.join(root, "public", "favicon.svg"));
+  // Sync 404.html
+  await copyFile(path.join(publicShared, "404.html"), path.join(root, "public", "404.html"));
+  // Sync main.js
+  await copyFile(path.join(jsShared, "main.js"), path.join(root, "public", "js", "main.js"));
+
+  console.log("Shared assets synchronized.");
+};
+
 const run = async () => {
   const failures = [];
+
+  try {
+    await syncSharedAssets();
+  } catch (err) {
+    console.error("Failed to sync shared assets:", err.message);
+  }
+
   for (const target of targets) {
     try {
       await replaceHeader(target);

@@ -5,6 +5,9 @@ export default {
   content: [
     "./public/**/*.html",
     "./public/**/*.js",
+    "./src/**/*.html",
+    "./src/**/*.js",
+    "../shared/src/**/*.html",
   ],
   theme: {
     extend: {
