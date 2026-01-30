@@ -1,0 +1,9 @@
+{
+    "name": "x-verse-monorepo",
+    "private": true,
+    "workspaces": [
+        "logi",
+        "shared",
+        "top"
+    ]
+}

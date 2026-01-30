@@ -1,0 +1,124 @@
+@layer base {
+    html {
+        @apply overflow-x-hidden;
+    }
+
+    body {
+        @apply bg-deep-void text-deep-ink font-sans antialiased selection:bg-luminous-blue/30 selection:text-deep-ink overflow-x-hidden w-full;
+    }
+
+    /* Global spacing fix for footer overlap */
+    main {
+        @apply pb-24;
+    }
+
+    h3 {
+        @apply text-deep-ink font-bold;
+    }
+}
+
+@layer utilities {
+
+    /* Glassmorphism */
+    .glass {
+        @apply bg-white/80 backdrop-blur-md border-b border-slate-200 shadow-sm;
+    }
+
+    .glass-card {
+        @apply bg-white/60 backdrop-blur-md border border-slate-200 hover:border-cyber-teal/50 transition-all duration-500 hover:shadow-lg hover:shadow-cyber-teal/10;
+    }
+
+    /* Scroll Animation */
+    .animate-on-scroll {
+        opacity: 0;
+        transform: translateY(2rem);
+        transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+        will-change: transform, opacity;
+    }
+
+    .animate-on-scroll.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* Glow Effects */
+    .glow-text {
+        text-shadow: 0 0 20px rgba(157, 33, 36, 0.5);
+    }
+
+    /* Dramatic Animations */
+    @keyframes blur-in-expand {
+        0% {
+            opacity: 0;
+            filter: blur(20px);
+            transform: scale(1.1);
+            letter-spacing: 0.2em;
+        }
+
+        100% {
+            opacity: 1;
+            filter: blur(0);
+            transform: scale(1);
+            letter-spacing: normal;
+        }
+    }
+
+    .animate-blur-in {
+        animation: blur-in-expand 1.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes fade-up-reveal {
+        0% {
+            opacity: 0;
+            transform: translateY(40px);
+            filter: blur(10px);
+        }
+
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+            filter: blur(0);
+        }
+    }
+
+    .animate-fade-up-dramatic {
+        opacity: 0;
+        /* Initial state */
+        animation: fade-up-reveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    /* Glossy Shine Effect */
+    @keyframes shine-sweep {
+        0% {
+            left: -100%;
+            opacity: 0;
+        }
+
+        5% {
+            opacity: 0.5;
+        }
+
+        50% {
+            left: 200%;
+            opacity: 0.5;
+        }
+
+        100% {
+            left: 200%;
+            opacity: 0;
+        }
+    }
+
+    .animate-shine::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 50%;
+        height: 100%;
+        background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.8), transparent);
+        transform: skewX(-20deg);
+        animation: shine-sweep 3s infinite ease-in-out;
+        pointer-events: none;
+    }
+}

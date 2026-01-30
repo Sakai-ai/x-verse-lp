@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>X-VERSE｜Web 3Dプラットフォーム</title>
+    <meta name="description" content="世界を、配置し、動かし、体験する。Webブラウザだけで空間・時間・動きを扱える次世代Web 3Dプラットフォーム。">
+    <meta property="og:image" content="./assets/images/ogp.svg">
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+    <link rel="stylesheet" href="./css/output.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body class="bg-white text-slate-900 font-sans antialiased overflow-x-hidden relative">
+
+    <!-- Background Effects (Light Theme) -->
+    <div class="fixed inset-0 pointer-events-none z-0">
+        <div
+            class="absolute top-[-20%] left-[-10%] w-[50%] h-[50%] bg-blue-100/40 blur-[120px] rounded-full animate-pulse-slow">
+        </div>
+        <div class="absolute bottom-[-20%] right-[-10%] w-[50%] h-[50%] bg-cyan-100/40 blur-[120px] rounded-full animate-pulse-slow"
+            style="animation-delay: 2s;"></div>
+    </div>
+
+
+    <!-- Header -->
+<header class="fixed w-full z-50 glass transition-all duration-500" id="main-header">
+    <nav class="container mx-auto px-6 h-20 flex items-center justify-between">
+        <div class="flex items-center group">
+            <a href="./" class="     transition-all duration-500"><img src="./assets/images/logo.svg" alt="X-VERSE"
+                    class="h-8 w-auto" /></a>
+        </div>
+
+        <div class="hidden lg:flex items-center space-x-12">
+            <a href="./index.html#product"
+                class="text-sm font-medium tracking-widest hover:text-luminous-blue transition-colors duration-300 relative group">
+                製品紹介
+                <span
+                    class="absolute -bottom-1 left-0 w-0 h-[1px] bg-luminous-blue transition-all duration-300 group-hover:w-full"></span>
+            </a>
+            <!-- <a href="./index.html#solutions"
+                    class="text-sm font-medium tracking-widest hover:text-luminous-blue transition-colors duration-300 relative group">
+                    ソリューション
+                    <span
+                        class="absolute -bottom-1 left-0 w-0 h-[1px] bg-luminous-blue transition-all duration-300 group-hover:w-full"></span>
+                </a> -->
+            <a href="./index.html#features"
+                class="text-sm font-medium tracking-widest hover:text-luminous-blue transition-colors duration-300 relative group">
+                主要機能
+                <span
+                    class="absolute -bottom-1 left-0 w-0 h-[1px] bg-luminous-blue transition-all duration-300 group-hover:w-full"></span>
+            </a>
+            <a href="./company/index.html"
+                class="text-sm font-medium tracking-widest hover:text-luminous-blue transition-colors duration-300 relative group">
+                会社案内
+                <span
+                    class="absolute -bottom-1 left-0 w-0 h-[1px] bg-luminous-blue transition-all duration-300 group-hover:w-full"></span>
+            </a>
+            <a href="./contact/index.html"
+                class="relative px-8 py-3 overflow-hidden rounded-full group bg-white border border-slate-300 hover:border-luminous-blue/50 transition-all duration-500 animate-shine">
+                <div
+                    class="absolute inset-0 w-0 bg-gradient-to-r from-luminous-blue/20 to-cyber-teal/20 transition-all duration-[250ms] ease-out group-hover:w-full">
+                </div>
+                <span
+                    class="relative text-sm font-bold tracking-widest group-hover:text-deep-ink transition-colors">お問い合わせ</span>
+            </a>
+        </div>
+
+        <button id="mobile-menu-button" class="lg:hidden p-2 text-deep-ink hover:text-luminous-blue transition">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M4 6h16M4 12h16m-7 6h7">
+                </path>
+            </svg>
+        </button>
+    </nav>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu"
+        class="hidden lg:hidden bg-white/95 backdrop-blur-xl border-b border-slate-300 px-6 py-8 space-y-6 absolute w-full left-0 top-20">
+        <a href="./index.html#product"
+            class="block text-lg font-light tracking-widest hover:text-luminous-blue transition">製品紹介</a>
+        <!-- <a href="./index.html#solutions"
+                class="block text-lg font-light tracking-widest hover:text-luminous-blue transition">ソリューション</a> -->
+        <a href="./index.html#features"
+            class="block text-lg font-light tracking-widest hover:text-luminous-blue transition">主要機能</a>
+        <a href="./company/"
+            class="block text-lg font-light tracking-widest hover:text-luminous-blue transition">会社案内</a>
+        <a href="./contact/" class="block text-lg font-bold tracking-widest text-luminous-blue">お問い合わせ</a>
+    </div>
+</header>
+
+    <main class="relative z-10 pt-20">
+
+        <!-- Hero Section -->
+        <section class="min-h-[90vh] flex items-center relative overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div class="space-y-8 animate-fade-up">
+                        <div
+                            class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-metallic-silver tracking-wide">
+                            <span class="w-1.5 h-1.5 rounded-full bg-luminous-blue animate-pulse"></span>
+                            Web 3D Platform
+                        </div>
+                        <h1 class="text-5xl md:text-7xl font-bold leading-tight tracking-tight">
+                            Create.<br>
+                            Simulate.<br>
+                            <span
+                                class="text-transparent bg-clip-text bg-gradient-to-r from-luminous-blue to-cyber-teal">Experience.</span>
+                        </h1>
+                        <p class="text-lg md:text-xl text-metallic-silver max-w-lg leading-relaxed">
+                            現実世界をそのまま“操作できる3D”へ。<br>
+                            Webブラウザだけで空間・時間・動きを扱える、<br>
+                            次世代の統合3Dプラットフォーム。
+                        </p>
+                        <div class="flex gap-4">
+                            <a href="./contact/index.html"
+                                class="px-8 py-4 bg-gradient-to-r from-luminous-blue to-cyber-teal rounded-lg font-bold shadow-lg shadow-luminous-blue/20 hover:shadow-luminous-blue/40 transition-all hover:-translate-y-1">
+                                まずは体験する
+                            </a>
+                            <a href="./logi/index.html"
+                                class="px-8 py-4 bg-white/5 border border-white/10 rounded-lg font-bold hover:bg-white/10 transition-all hover:-translate-y-1 flex items-center gap-2">
+                                X-VERSE Logi
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
+                                    </path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Hero Visual -->
+                    <div class="relative h-[500px] w-full bg-gradient-to-br from-white/5 to-white/0 rounded-2xl border border-white/10 backdrop-blur-sm flex items-center justify-center animate-blur-in"
+                        style="animation-delay: 0.2s;">
+                        <div class="text-center">
+                            <p class="text-metallic-silver mb-4">Interactive 3D View</p>
+                            <!-- Placeholder for 3D/Video -->
+                            <div
+                                class="w-24 h-24 mx-auto border-2 border-luminous-blue/50 rounded-full flex items-center justify-center animate-spin-slow">
+                                <span class="block w-2 h-2 bg-luminous-blue rounded-full"></span>
+                            </div>
+                        </div>
+                        <!-- UI Overlay Decorations -->
+                        <div
+                            class="absolute top-6 left-6 w-32 h-20 bg-black/40 rounded border border-white/10 p-2 space-y-2">
+                            <div class="h-2 w-16 bg-white/20 rounded"></div>
+                            <div class="h-2 w-24 bg-white/10 rounded"></div>
+                        </div>
+                        <div
+                            class="absolute bottom-6 right-6 w-48 h-12 bg-black/40 rounded-full border border-white/10 flex items-center justify-center gap-4">
+                            <div class="w-8 h-8 rounded-full bg-luminous-blue/20 border border-luminous-blue/50"></div>
+                            <div class="w-8 h-8 rounded-full bg-white/5 border border-white/10"></div>
+                            <div class="w-8 h-8 rounded-full bg-white/5 border border-white/10"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Concept Section -->
+        <section id="concept" class="py-24 relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16 animate-fade-up">
+                    <h2 class="text-3xl md:text-5xl font-bold mb-6">「現実」を、そのまま3Dで扱う</h2>
+                    <p class="text-metallic-silver max-w-2xl mx-auto leading-relaxed">
+                        X-VERSEは単なる表示ツールではありません。<br>
+                        現実世界をベースに、配置・操作・時間変化・共有までをWeb上で完結させます。
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Card 1 -->
+                    <div
+                        class="group p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-luminous-blue/50 transition-all hover:bg-white/10">
+                        <div
+                            class="w-12 h-12 rounded-lg bg-luminous-blue/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                            <svg class="w-6 h-6 text-luminous-blue" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9">
+                                </path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Web 3D</h3>
+                        <p class="text-sm text-metallic-silver">専用アプリ不要。URLひとつで誰でもアクセス可能なブラウザベース環境。</p>
+                    </div>
+                    <!-- Card 2 -->
+                    <div
+                        class="group p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-luminous-blue/50 transition-all hover:bg-white/10">
+                        <div
+                            class="w-12 h-12 rounded-lg bg-cyan-500/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                            <svg class="w-6 h-6 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Time</h3>
+                        <p class="text-sm text-metallic-silver">日時・工程・移動。時間軸を持った4次元シミュレーションを実現。</p>
+                    </div>
+                    <!-- Card 3 -->
+                    <div
+                        class="group p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-luminous-blue/50 transition-all hover:bg-white/10">
+                        <div
+                            class="w-12 h-12 rounded-lg bg-emerald-500/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                            <svg class="w-6 h-6 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122">
+                                </path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Action</h3>
+                        <p class="text-sm text-metallic-silver">配置、連結、移動。直感的なUIで空間を自由に操作・構築。</p>
+                    </div>
+                    <!-- Card 4 -->
+                    <div
+                        class="group p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-luminous-blue/50 transition-all hover:bg-white/10">
+                        <div
+                            class="w-12 h-12 rounded-lg bg-purple-500/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                            <svg class="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z">
+                                </path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Share</h3>
+                        <p class="text-sm text-metallic-silver">URL共有で瞬時に同期。クラウド、ローカル、イントラなど自在な運用。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Repertoires -->
+        <section id="usecases" class="py-24 bg-black/20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-5xl font-bold mb-6">Repertoires</h2>
+                    <p class="text-metallic-silver">統合基盤 X-VERSE 上で展開されるプロダクト群</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Logi Card -->
+                    <a href="./logi/index.html"
+                        class="group block relative rounded-3xl overflow-hidden border border-white/10 hover:border-luminous-blue/50 transition-all">
+                        <div class="absolute inset-0 bg-gradient-to-t from-xverse-blue to-transparent opacity-80 z-10">
+                        </div>
+                        <div
+                            class="h-64 bg-gray-800 relative z-0 group-hover:scale-105 transition-transform duration-700">
+                            <!-- Placeholder Image -->
+                            <div
+                                class="w-full h-full bg-[url('./assets/images/product_hero.png')] bg-cover bg-center opactiy-50">
+                            </div>
+                            <!-- Fallback Pattern -->
+                            <div
+                                class="absolute inset-0 opacity-20 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px]">
+                            </div>
+                        </div>
+                        <div class="absolute bottom-0 left-0 p-8 z-20 w-full">
+                            <div class="flex justify-between items-end">
+                                <div>
+                                    <h3
+                                        class="text-3xl font-bold mb-2 group-hover:text-luminous-blue transition-colors">
+                                        Logi</h3>
+                                    <p class="text-metallic-silver">次世代倉庫3Dデジタルツイン</p>
+                                </div>
+                                <span
+                                    class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-luminous-blue group-hover:text-white transition-all">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                                    </svg>
+                                </span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Coming Soon -->
+                    <div
+                        class="group block relative rounded-3xl overflow-hidden border border-white/5 bg-white/5 opacity-50 cursor-not-allowed">
+                        <div class="h-64 flex items-center justify-center">
+                            <span class="text-2xl font-bold text-metallic-silver/50">Coming Soon</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- CTA -->
+        <section id="contact" class="py-24 relative overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-b from-transparent to-luminous-blue/10 pointer-events-none">
+            </div>
+            <div class="max-w-4xl mx-auto px-4 text-center relative z-10">
+                <h2 class="text-4xl font-bold mb-8">まずは体験してください</h2>
+                <p class="text-xl text-metallic-silver mb-12">
+                    X-VERSEの価値は「触る」「動かす」「体験する」ことで伝わります。<br>
+                    デモのご案内、貴社用途での活用相談まで対応可能です。
+                </p>
+                <a href="./contact/index.html"
+                    class="inline-block px-12 py-5 bg-white text-xverse-blue font-bold text-lg rounded-full shadow-[0_0_20px_rgba(255,255,255,0.3)] hover:shadow-[0_0_40px_rgba(255,255,255,0.5)] hover:scale-105 transition-all">
+                    お問い合わせ・資料請求
+                </a>
+            </div>
+        </section>
+
+        <footer class="bg-slate-50 text-slate-700 py-16 border-t border-slate-200 relative overflow-hidden">
+    <div
+        class="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-cyber-teal/20 to-transparent">
+    </div>
+
+    <div class="container mx-auto px-4 text-center md:text-left">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-8 mb-12">
+            <div class="mx-auto md:mx-0">
+                <div>
+                    <img src="./assets/images/logo.svg" alt="X-VERSE"
+                        class="h-10 w-auto mb-4 mx-auto md:mx-0" />
+                </div>
+                <div class="text-base font-bold text-slate-700">倉庫・物流の現場をデジタルで可視化する</div>
+            </div>
+            <div class="flex flex-wrap justify-center md:justify-end gap-x-10 gap-y-4 mx-auto md:mx-0">
+                <a href="./privacy/index.html"
+                    class="hover:text-luminous-blue transition-colors text-sm tracking-wider font-bold">プライバシーポリシー</a>
+                <a href="./terms/index.html"
+                    class="hover:text-luminous-blue transition-colors text-sm tracking-wider font-bold">利用規約</a>
+                <a href="./company/index.html"
+                    class="hover:text-luminous-blue transition-colors text-sm tracking-wider font-bold">運営会社</a>
+            </div>
+        </div>
+        <div
+            class="flex flex-col md:flex-row justify-between items-center text-xs text-slate-700 border-t border-slate-200 pt-8 font-bold">
+            <div class="mb-4 md:mb-0">&copy; 2026 X-VERSE. All rights reserved.</div>
+            <div class="flex gap-4">
+                <!-- Social Icons placeholder if needed -->
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+
+    </main>
+</body>
+
+</html>
