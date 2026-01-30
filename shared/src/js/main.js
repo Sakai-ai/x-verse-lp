@@ -171,20 +171,15 @@ document.addEventListener('DOMContentLoaded', () => {
     // Typewriter Effect for Platform Code
     const codeContainer = document.getElementById('code-typewriter');
     if (codeContainer) {
-        const codeText = `// Initialize X-VERSE Engine
-const xverse = new XVerse({
-  mode: 'digital_twin',
-  sync: 'realtime',
-  modules: ['BIM', 'IoT', 'PointCloud']
-});
+        const codeText = `// X-VERSE Project Initialization
 
-// Connect to Data Lake
-await xverse.connect();
-
-// Render 3D Environment
-xverse.render('#app');
-
-console.log('Ready to Optimize');`;
+const
+  platform = new XVerse({
+    space: "Photorealistic 3D",
+    time: "4D Timeline Simulation",
+    action: "Unified Interaction UI",
+    share: "Collaborative Sync"
+  });`;
 
         const typeWriterObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
