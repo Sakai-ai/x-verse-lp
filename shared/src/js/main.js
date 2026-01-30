@@ -50,17 +50,19 @@ document.addEventListener('DOMContentLoaded', () => {
         rootMargin: "0px 0px -50px 0px"
     };
 
-    const observer = new IntersectionObserver((entries) => {
+    const animationObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('is-visible');
-                observer.unobserve(entry.target);
+                animationObserver.unobserve(entry.target);
             }
         });
     }, observerOptions);
 
-    document.querySelectorAll('.animate-on-scroll').forEach(el => {
-        observer.observe(el);
+    // [修正] animate- で始まるすべてのクラスを監視対象にする
+    document.querySelectorAll('[class*="animate-"]').forEach(el => {
+        // すでに visible なものは除外したいが、基本はすべて登録
+        animationObserver.observe(el);
     });
 
     // Parallax Effect
