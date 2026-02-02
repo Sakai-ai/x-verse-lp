@@ -184,11 +184,12 @@ const
         const typeWriterObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
+                    console.log('Typewriter section intersected');
                     startTypewriter(codeContainer, codeText);
                     typeWriterObserver.unobserve(entry.target);
                 }
             });
-        }, { threshold: 0.5 });
+        }, { threshold: 0.1, rootMargin: "0px 0px -100px 0px" });
 
         typeWriterObserver.observe(codeContainer);
     }
