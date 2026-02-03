@@ -1,0 +1,47 @@
+{
+  "version": "0.1.0",
+  "id": "7689dbcb-9fe0-446f-9b09-6c4874afa751",
+  "timestamp": "2026-02-03T03:29:51.974Z",
+  "vcs": {
+    "type": "git",
+    "revision": "444990fce5b71fbc87ccddb952bce4bc26abc210"
+  },
+  "files": [
+    {
+      "path": ".agent-traces/ff774e15-fbd4-4a69-b148-6906abf07f1e.json",
+      "conversations": [
+        {
+          "contributor": {
+            "type": "ai"
+          },
+          "ranges": [
+            {
+              "start_line": 1,
+              "end_line": 47
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "src/pages/index.astro",
+      "conversations": [
+        {
+          "contributor": {
+            "type": "ai"
+          },
+          "ranges": [
+            {
+              "start_line": 29,
+              "end_line": 29
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "message": "Change hero title to '世界を３Ｄで'",
+    "generator": "node-record-trace-script"
+  }
+}
