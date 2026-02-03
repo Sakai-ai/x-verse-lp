@@ -36,7 +36,6 @@ const currentNav = (navItems[currentService as keyof typeof navItems] || navItem
     return true;
 });
 const contactHref = currentService === 'logi' ? '/logi/contact/' : '/contact/';
-const rubyText = currentService === 'logi' ? 'クロスバース・ロジ' : 'クロスバース';
 ---
 
 <ServiceSwitcher currentService={currentService} />
