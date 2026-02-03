@@ -1,0 +1,124 @@
+---
+// コンテキスト対応ヘッダー
+import ServiceSwitcher from './ServiceSwitcher.astro';
+
+interface Props {
+    currentService?: string;
+}
+
+const { currentService = 'top' } = Astro.props;
+
+// サービスごとのナビゲーション定義
+const navItems = {
+    top: [
+        { name: '製品紹介', href: '/#products' },
+        { name: '主要機能', href: '/#features' },
+        { name: '会社案内', href: '/company/' },
+    ],
+    logi: [
+        { name: '製品概要', href: '/logi/#product' },
+        { name: '主要機能', href: '/logi/#features' },
+        { name: 'FAQ', href: '/logi/#faq' },
+    ],
+};
+
+const currentNav = navItems[currentService as keyof typeof navItems] || navItems.top;
+const contactHref = currentService === 'logi' ? '/logi/contact/' : '/contact/';
+---
+
+<ServiceSwitcher currentService={currentService} />
+
+<header class="fixed w-full z-40 glass transition-all duration-500" id="main-header" style="top: 40px;">
+    <nav class="container mx-auto px-6 h-20 flex items-center justify-between">
+        <div class="flex items-end group">
+            <a href={currentService === 'logi' ? '/logi/' : '/'} class="transition-all duration-500 flex flex-col items-center">
+                <span class="text-[10px] text-slate-500 tracking-[0.15em] font-medium mb-0.5">クロスバース</span>
+                <img src="/assets/images/logo.svg" alt="X-VERSE" class="h-8 w-auto" />
+            </a>
+            {currentService === 'logi' && (
+                <span class="ml-3 mb-1.5 px-2 py-1 text-xs font-bold text-white bg-xverse-red tracking-widest">Logi</span>
+            )}
+        </div>
+
+        <div class="hidden lg:flex items-center space-x-12">
+            {currentNav.map((item) => (
+                <a href={item.href} class="text-sm font-medium tracking-widest hover:text-xverse-red transition-colors duration-300 relative group">
+                    {item.name}
+                    <span class="absolute -bottom-1 left-0 w-0 h-[1px] bg-xverse-red transition-all duration-300 group-hover:w-full"></span>
+                </a>
+            ))}
+            <a href={contactHref} class="relative px-8 py-3 overflow-hidden rounded-full group bg-white border border-slate-300 hover:border-xverse-red/50 transition-all duration-500 animate-shine">
+                <div class="absolute inset-0 w-0 bg-gradient-to-r from-xverse-red/20 to-xverse-red-light/20 transition-all duration-[250ms] ease-out group-hover:w-full"></div>
+                <span class="relative text-sm font-bold tracking-widest group-hover:text-deep-ink transition-colors">お問い合わせ</span>
+            </a>
+        </div>
+
+        <button id="mobile-menu-button" class="lg:hidden p-2 text-deep-ink hover:text-xverse-red transition">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M4 6h16M4 12h16m-7 6h7"></path>
+            </svg>
+        </button>
+    </nav>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden lg:hidden bg-white/95 backdrop-blur-xl border-b border-slate-300 px-6 py-8 space-y-6 absolute w-full left-0 top-20">
+        {currentNav.map((item) => (
+            <a href={item.href} class="block text-lg font-light tracking-widest hover:text-xverse-red transition">{item.name}</a>
+        ))}
+        <a href={contactHref} class="block text-lg font-bold tracking-widest text-xverse-red">お問い合わせ</a>
+    </div>
+</header>
+
+<script>
+    // ヘッダーのスクロール動作制御
+    const initHeaderScroll = () => {
+        const header = document.getElementById('main-header');
+        if (!header) return;
+
+        let lastScroll = window.scrollY || document.documentElement.scrollTop;
+        let ticking = false;
+
+        const updateHeader = () => {
+            const currentScroll = window.scrollY || document.documentElement.scrollTop;
+
+            // 最上部付近
+            if (currentScroll <= 10) {
+                header.style.top = '40px'; // 初期位置（ServiceSwitcherの下）
+                header.classList.remove('bg-white/80', 'backdrop-blur-xl');
+                header.classList.add('glass'); // 元のガラス効果に戻す
+                lastScroll = currentScroll;
+                return;
+            }
+
+            // スクロールダウン中
+            if (currentScroll > lastScroll && currentScroll > 100) {
+                header.style.top = '-100px'; // 隠す
+            }
+            // スクロールアップ中
+            else if (currentScroll < lastScroll) {
+                header.style.top = '0px'; // 上端に固定して表示
+            }
+
+            lastScroll = currentScroll;
+        };
+
+        const onScroll = () => {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    updateHeader();
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        };
+
+        // スクロールイベント（パッシブ）
+        window.addEventListener('scroll', onScroll, { passive: true });
+        updateHeader();
+    };
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initHeaderScroll);
+    } else {
+        initHeaderScroll();
+    }
+</script>

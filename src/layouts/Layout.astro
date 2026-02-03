@@ -1,0 +1,151 @@
+---
+import '../styles/global.css';
+import ProductSection from '../components/ProductSection.astro';
+import CTA from '../components/CTA.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+	title: string;
+	description?: string;
+    currentService?: string;
+}
+
+const { title, description = "世界を、配置し、動かし、体験する。次世代Web 3Dプラットフォーム。", currentService = "top" } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+		<meta name="description" content={description} />
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+		<!-- 
+		  [表示不具合・ローカルアニメーション対策] 
+		  JSモジュールが読み込まれない環境（ローカルfile://等）でもアニメーションを動作させるための
+		  フォールバック用インラインスクリプト。
+		-->
+		<script>
+			(function() {
+				// JSが有効であることを示すクラス
+				document.documentElement.classList.add('js-loaded');
+
+				// アニメーション対象のセレクタ (コンテナも監視対象に含める)
+				var targetsSelector = '.animate-on-scroll, [class*="animate-"], .platform-slide-left, .platform-slide-right, .stagger-container';
+
+				// 1. 強制表示スタイルの適用（ただしアニメーションは阻害しないようにtransitionは維持）
+				// ... (コメント略)
+
+				// 2. インラインでのIntersectionObserver実装
+				var observerOptions = {
+					root: null,
+					rootMargin: '0px', // マージンなしで確実に検知させる
+					threshold: 0       // 閾値を0にして、少しでも触れたら発火
+				};
+
+				var observer = new IntersectionObserver(function(entries, obs) {
+					entries.forEach(function(entry) {
+						if (entry.isIntersecting) {
+							var target = entry.target;
+							
+							// スタッガーコンテナの場合の特別処理
+							if (target.classList.contains('stagger-container')) {
+								var items = target.querySelectorAll('.stagger-item');
+								items.forEach(function(item, index) {
+									setTimeout(function() {
+										item.classList.add('stagger-animate');
+										item.classList.add('is-visible'); // 念のため両方
+									}, index * 100); // 100msずつ遅延
+								});
+								// コンテナ自体の可視化
+								target.classList.add('is-visible');
+							} else {
+								// 通常の要素
+								target.classList.add('is-visible');
+							}
+							
+							obs.unobserve(target);
+						}
+					});
+				}, observerOptions);
+
+				function initInlineObserver() {
+					var targets = document.querySelectorAll(targetsSelector);
+					targets.forEach(function(el) {
+						observer.observe(el);
+					});
+				}
+
+				// DOMContentLoadedを待つ（インラインなので即実行される場合もあるが念のため）
+				if (document.readyState === 'loading') {
+					document.addEventListener('DOMContentLoaded', initInlineObserver);
+				} else {
+					initInlineObserver();
+				}
+
+				// セーフティネットは削除（スクロール位置ではなく時間で発火する問題の原因だったため）
+			// IntersectionObserverが正常に動作すればアニメーションは適切に発火します
+		})();
+		</script>
+	</head>
+	<body class="bg-white text-slate-900 font-sans antialiased overflow-x-hidden relative">
+		<div class="overflow-x-hidden w-full max-w-full">
+			<slot />
+            <ProductSection />
+            <CTA />
+            <Footer currentService={currentService} />
+		</div>
+        <!-- 上に戻るボタン -->
+        <button id="scroll-to-top" class="scroll-to-top-btn fixed z-[9999] p-3 rounded-full bg-slate-900/80 text-white shadow-lg backdrop-blur-sm opacity-0 translate-y-10 pointer-events-none transition-all duration-300 hover:bg-xverse-red hover:shadow-[0_0_20px_rgba(157,33,36,0.5)] focus:outline-none group" style="position: fixed; right: 2rem; bottom: 2rem;" aria-label="上に戻る">
+            <svg class="w-6 h-6 transform group-hover:-translate-y-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+            </svg>
+        </button>
+
+		<script src="/scripts/main.js" is:inline></script>
+        
+        <script>
+            // 上に戻るボタンの制御
+            document.addEventListener('DOMContentLoaded', () => {
+                const scrollToTopBtn = document.getElementById('scroll-to-top');
+                
+                if (scrollToTopBtn) {
+                    console.log('Scroll to top button initialized');
+                    
+                    // 表示切り替えロジック
+                    const toggleButton = () => {
+                        // window.scrollYだけでなく、documentElement.scrollTopも確認（ブラウザ互換性）
+                        const scrollY = window.scrollY || document.documentElement.scrollTop;
+                        if (scrollY > 200) { // 閾値を300から200に変更して反応を良くする
+                            scrollToTopBtn.classList.remove('opacity-0', 'translate-y-10', 'pointer-events-none');
+                            scrollToTopBtn.classList.add('opacity-100', 'translate-y-0', 'pointer-events-auto');
+                        } else {
+                            scrollToTopBtn.classList.remove('opacity-100', 'translate-y-0', 'pointer-events-auto');
+                            scrollToTopBtn.classList.add('opacity-0', 'translate-y-10', 'pointer-events-none');
+                        }
+                    };
+
+                    // イベントリスナー（パッシブ設定でパフォーマンス改善）
+                    window.addEventListener('scroll', toggleButton, { passive: true });
+                    
+                    // 初期状態チェック
+                    toggleButton();
+
+                    // クリックイベント
+                    scrollToTopBtn.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        window.scrollTo({
+                            top: 0,
+                            behavior: 'smooth'
+                        });
+                    });
+                }
+            });
+        </script>
+	</body>
+</html>

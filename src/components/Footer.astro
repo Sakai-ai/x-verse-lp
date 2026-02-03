@@ -1,0 +1,104 @@
+---
+// コンテキスト対応フッター
+interface Props {
+    currentService?: string;
+}
+
+const { currentService = 'top' } = Astro.props;
+
+// サービス一覧
+const services = [
+    { name: 'X-VERSE TOP', href: '/', description: 'プラットフォーム概要' },
+    { name: 'X-VERSE Logi', href: '/logi/', description: '倉庫3Dシミュレーター' },
+];
+
+// サービスごとのローカルリンク
+const localLinks = {
+    top: [
+        { name: '製品紹介', href: '/#products' },
+        { name: '主要機能', href: '/#features' },
+        { name: 'お問い合わせ', href: '/contact/' },
+    ],
+    logi: [
+        { name: '製品概要', href: '/logi/#product' },
+        { name: '主要機能', href: '/logi/#features' },
+        { name: 'FAQ', href: '/logi/#faq' },
+        { name: 'お問い合わせ', href: '/logi/contact/' },
+    ],
+};
+
+// 企業情報リンク
+const companyLinks = [
+    { name: 'プライバシーポリシー', href: '/privacy/' },
+    { name: '利用規約', href: '/terms/' },
+    { name: '運営会社', href: '/company/' },
+];
+
+const currentLocalLinks = localLinks[currentService as keyof typeof localLinks] || localLinks.top;
+const sectionTitle = currentService === 'logi' ? 'X-VERSE Logi' : 'X-VERSE';
+---
+
+<footer class="bg-slate-50 text-slate-700 py-10 md:py-16 border-t border-slate-200 relative overflow-hidden">
+    <div class="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-cyber-teal/20 to-transparent"></div>
+
+    <div class="container mx-auto px-6">
+        <!-- メインフッターコンテンツ -->
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-y-8 md:gap-y-10 gap-x-6 mb-12">
+            <!-- ロゴ・キャッチコピー -->
+            <div class="col-span-2 lg:col-span-1">
+                <img src="/assets/images/logo.svg" alt="X-VERSE" class="h-10 w-auto mb-4" />
+                <p class="text-base font-bold text-slate-700">現実を、3Dで体験する</p>
+                <p class="text-sm text-slate-500 mt-2">次世代Web 3Dプラットフォーム</p>
+            </div>
+
+            <!-- サービス一覧 -->
+            <div>
+                <h4 class="text-sm font-bold text-slate-900 tracking-wider uppercase mb-4">サービス</h4>
+                <ul class="space-y-3">
+                    {services.map((service) => (
+                        <li>
+                            <a href={service.href} class="hover:text-xverse-red transition-colors text-sm font-medium">
+                                {service.name}
+                            </a>
+                            <span class="block text-xs text-slate-400">{service.description}</span>
+                        </li>
+                    ))}
+                    <li class="text-sm text-slate-400">Coming Soon...</li>
+                </ul>
+            </div>
+
+            <!-- このサービス -->
+            <div>
+                <h4 class="text-sm font-bold text-slate-900 tracking-wider uppercase mb-4">{sectionTitle}</h4>
+                <ul class="space-y-3">
+                    {currentLocalLinks.map((link) => (
+                        <li>
+                            <a href={link.href} class="hover:text-xverse-red transition-colors text-sm font-medium">
+                                {link.name}
+                            </a>
+                        </li>
+                    ))}
+                </ul>
+            </div>
+
+            <!-- 企業情報 -->
+            <div>
+                <h4 class="text-sm font-bold text-slate-900 tracking-wider uppercase mb-4">企業情報</h4>
+                <ul class="space-y-3">
+                    {companyLinks.map((link) => (
+                        <li>
+                            <a href={link.href} class="hover:text-xverse-red transition-colors text-sm font-medium">
+                                {link.name}
+                            </a>
+                        </li>
+                    ))}
+                </ul>
+            </div>
+        </div>
+
+        <!-- コピーライト -->
+        <div class="border-t border-slate-200 pt-8 text-center text-xs text-slate-500 font-medium">
+            &copy; 2026 X-VERSE. All rights reserved.
+        </div>
+    </div>
+</footer>

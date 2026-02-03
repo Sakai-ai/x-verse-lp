@@ -1,0 +1,81 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+
+---
+
+<Layout title="プライバシーポリシー | X-VERSE">
+    <Header currentService="top" />
+
+    <main class="pt-20 min-h-screen">
+        <section class="py-20 relative bg-slate-50">
+            <div class="absolute inset-0 bg-[url('/assets/patterns/grid.svg')] opacity-5 mix-blend-overlay"></div>
+
+            <div class="container mx-auto px-4 max-w-4xl relative z-10">
+                <div class="text-center mb-16 animate-on-scroll">
+                    <h1 class="text-5xl md:text-6xl font-thin mb-6 tracking-tight text-deep-ink">PRIVACY POLICY</h1>
+                    <p class="text-xverse-red text-sm font-bold tracking-[0.3em] uppercase">プライバシーポリシー</p>
+                </div>
+
+                <div class="glass-card p-10 rounded-3xl border border-slate-200 animate-on-scroll space-y-8 text-slate-700">
+                    <section>
+                        <h2 class="text-xl font-bold text-deep-ink mb-4 border-l-4 border-xverse-red pl-4">1. 個人情報の収集について</h2>
+                        <p class="leading-relaxed">
+                            当社は、お客様からお問い合わせいただく際に、氏名、メールアドレス、電話番号、会社名などの個人情報をご提供いただく場合があります。これらの情報は、お問い合わせへの対応、サービスのご案内、その他正当な業務目的のために使用いたします。
+                        </p>
+                    </section>
+
+                    <section>
+                        <h2 class="text-xl font-bold text-deep-ink mb-4 border-l-4 border-xverse-red pl-4">2. 個人情報の利用目的</h2>
+                        <ul class="list-disc list-inside space-y-2 marker:text-xverse-red">
+                            <li>お問い合わせへの対応</li>
+                            <li>製品・サービスに関する情報提供</li>
+                            <li>契約の履行および関連するサポート</li>
+                            <li>サービス改善のための統計データ作成</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2 class="text-xl font-bold text-deep-ink mb-4 border-l-4 border-xverse-red pl-4">3. 個人情報の第三者提供</h2>
+                        <p class="leading-relaxed">
+                            当社は、以下の場合を除き、お客様の個人情報を第三者に提供することはありません。
+                        </p>
+                        <ul class="list-disc list-inside space-y-2 mt-4 marker:text-xverse-red">
+                            <li>お客様の同意がある場合</li>
+                            <li>法令に基づき開示が求められる場合</li>
+                            <li>人の生命、身体または財産の保護のために必要な場合</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2 class="text-xl font-bold text-deep-ink mb-4 border-l-4 border-xverse-red pl-4">4. 個人情報の管理</h2>
+                        <p class="leading-relaxed">
+                            当社は、お客様の個人情報を正確かつ最新の状態に保ち、個人情報への不正アクセス・紛失・破損・改ざん・漏洩などを防止するため、適切な安全対策を実施いたします。
+                        </p>
+                    </section>
+
+                    <section>
+                        <h2 class="text-xl font-bold text-deep-ink mb-4 border-l-4 border-xverse-red pl-4">5. お問い合わせ窓口</h2>
+                        <p class="leading-relaxed">
+                            個人情報の取扱いに関するお問い合わせは、以下の窓口までご連絡ください。
+                        </p>
+                        <div class="mt-4 p-6 bg-slate-50 rounded-xl">
+                            <p class="font-bold text-deep-ink">株式会社 MiraX</p>
+                            <p class="mt-2">〒533-0033 大阪府大阪市東淀川区東中島 1-18-22 新大阪丸ビル別館6F</p>
+                            <p class="mt-2">
+                                <a href="/contact/" class="text-xverse-red hover:text-deep-ink underline transition-colors">お問い合わせフォームはこちら</a>
+                            </p>
+                        </div>
+                    </section>
+
+                    <p class="text-right text-sm text-slate-500 pt-8 border-t border-slate-200">
+                        制定日：2024年1月1日<br>
+                        最終更新日：2024年1月1日
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+</Layout>

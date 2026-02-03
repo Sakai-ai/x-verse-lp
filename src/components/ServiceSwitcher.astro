@@ -1,0 +1,42 @@
+---
+// サービス切り替えバー
+// 新規サービス追加時は、servicesに追加するだけ
+interface Props {
+    currentService?: string;
+}
+
+const { currentService = 'top' } = Astro.props;
+
+// サービス定義（拡張時はここに追加）
+const services = [
+    { name: 'X-VERSE', href: '/', id: 'top', description: 'Web 3Dプラットフォーム' },
+    { name: 'Logi', href: '/logi/', id: 'logi', description: '倉庫3Dシミュレーター' },
+    // { name: 'City', href: '/city/', id: 'city', description: '都市計画3D' },  // 将来追加
+];
+---
+
+<div class="bg-slate-900 text-white text-sm py-2 relative z-50">
+    <div class="container mx-auto px-6">
+        <div class="flex items-center">
+            <div class="flex items-center gap-1 md:gap-2">
+                <span class="text-slate-400 text-xs tracking-wider hidden md:inline">SERVICES:</span>
+                {services.map((service) => (
+                    <a 
+                        href={service.href}
+                        class={`px-3 py-1 rounded-full transition-all duration-300 text-xs md:text-sm font-medium tracking-wide
+                            ${currentService === service.id 
+                                ? 'bg-xverse-red text-white' 
+                                : 'text-slate-300 hover:text-white hover:bg-slate-800'
+                            }`}
+                        title={service.description}
+                    >
+                        {service.name}
+                    </a>
+                ))}
+                <span class="px-3 py-1 text-slate-500 text-xs md:text-sm font-medium tracking-wide cursor-default">
+                    Coming Soon...
+                </span>
+            </div>
+        </div>
+    </div>
+</div>

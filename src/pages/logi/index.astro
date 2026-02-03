@@ -1,0 +1,237 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+
+---
+
+<Layout title="X-VERSE Logi | 次世代倉庫3Dデジタルツイン">
+    <Header currentService="logi" />
+
+    <main>
+        <!-- Hero Section -->
+        <section class="relative h-[85svh] md:h-screen flex items-center justify-center overflow-hidden bg-black">
+            <div class="absolute inset-0 z-10 bg-black/40 pointer-events-none"></div>
+            <div class="absolute inset-0 z-10 bg-[url('/assets/patterns/grid.svg')] opacity-20 mix-blend-overlay pointer-events-none"></div>
+
+            <video autoplay muted loop playsinline poster="/assets/images/hero_poster.png" class="absolute inset-0 w-full h-full object-cover opacity-80 scale-105 animate-pulse-slow">
+                <source src="/assets/video/hero-mov.mp4" type="video/mp4">
+            </video>
+
+            <div class="container mx-auto px-4 relative z-20 text-center text-white mt-10">
+                <h1 class="mb-12">
+                    <div class="flex items-center justify-center gap-3 animate-blur-in opacity-0 mb-4" style="animation-delay: 0.4s;">
+                        <img src="/assets/images/logo_w.svg" alt="X-VERSE" class="block h-10 md:h-12 w-auto" />
+                        <span class="px-2 py-1 text-xs font-bold text-white bg-xverse-red tracking-widest">Logi</span>
+                    </div>
+                    <span class="block text-[2.4rem] md:text-[3.6rem] lg:text-[4.8rem] font-bold mt-6 text-white tracking-wide animate-fade-up-dramatic opacity-0" style="animation-delay: 0.8s;">倉庫管理は異次元の可視化へ！</span>
+                </h1>
+
+                <p class="text-3xl md:text-5xl text-white mb-12 max-w-4xl mx-auto leading-relaxed animate-fade-up-dramatic opacity-0" style="animation-delay: 2.0s;">
+                    物流倉庫管理3Dシミュレーター
+                </p>
+            </div>
+
+            <a href="#product" class="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 flex flex-col items-center gap-2 opacity-0 animate-fade-up-dramatic cursor-pointer hover:opacity-80 transition-opacity duration-300" style="animation-delay: 2.8s;">
+                <span class="text-xs tracking-[0.2em] text-white uppercase font-light">Scroll</span>
+                <svg class="w-6 h-6 text-white animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                </svg>
+            </a>
+        </section>
+
+        <!-- Product Section -->
+        <section id="product" class="py-20 md:py-24 relative overflow-hidden bg-white">
+            <div class="absolute inset-0 bg-[url('/assets/patterns/grid.svg')] opacity-5 mix-blend-overlay pointer-events-none"></div>
+
+            <div class="container mx-auto px-4 max-w-6xl relative z-10 text-center">
+                <div class="max-w-4xl mx-auto text-center mb-24 animate-on-scroll">
+                    <h2 class="text-sm font-bold text-xverse-red uppercase tracking-[0.3em] mb-6 glow-text">PRODUCT</h2>
+                    <h3 class="text-4xl md:text-5xl font-light text-deep-ink mb-8 leading-tight">
+                        属人性を排除する<br>
+                        <span class="font-bold text-transparent bg-clip-text bg-gradient-to-r from-xverse-red to-xverse-red-light">3D倉庫管理</span>
+                    </h3>
+                    <p class="text-2xl text-slate-700 leading-loose max-w-4xl mx-auto font-normal text-left md:text-center">
+                        倉庫のイメージを３D化することで倉庫熟練者でなくても<br class="hidden md:inline">
+                        棚番号と棚の位置の把握が容易になります。<br class="hidden md:inline">
+                        棚の在庫は、点滅表示させることができ、一目で倉庫状況を把握することができます。
+                    </p>
+                </div>
+
+                <div class="space-y-12 md:space-y-32 text-left">
+                    <!-- Value 01 -->
+                    <div class="bg-slate-50 border border-slate-200 rounded-[2.5rem] p-8 md:p-12 flex flex-col md:flex-row items-center gap-2 md:gap-16 animate-on-scroll platform-slide-left group shadow-sm hover:shadow-md transition-shadow duration-300">
+                        <div class="md:w-1/2">
+                            <h2 class="text-3xl font-bold mb-6 text-deep-ink group-hover:text-xverse-red transition-colors">倉庫レイアウトも簡単作成</h2>
+                            <p class="text-slate-700 text-lg md:text-xl leading-loose mb-4 md:mb-8 font-normal">
+                                3Dレイアウト作成はCADスキルも必要なく、棚やコンベアなどの各パーツは、マグネット接着することができるので、お絵かきソフト間隔でレイアウトもサクサク組み立てることができます。
+                            </p>
+                        </div>
+                        <div class="md:w-1/2 rounded-3xl overflow-hidden glass-card p-2 relative">
+                            <div class="absolute inset-0 bg-xverse-red/20 blur-3xl opacity-20 group-hover:opacity-40 transition-opacity duration-500"></div>
+                            <div class="rounded-2xl overflow-hidden aspect-video relative z-10">
+                                <img src="/assets/images/product_01.png" alt="X-VERSE Platform" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Value 02 -->
+                    <div class="bg-slate-50 border border-slate-200 rounded-[2.5rem] p-8 md:p-12 flex flex-col md:flex-row-reverse items-center gap-2 md:gap-16 animate-on-scroll platform-slide-right group shadow-sm hover:shadow-md transition-shadow duration-300">
+                        <div class="md:w-1/2">
+                            <h2 class="text-3xl font-bold mb-6 text-deep-ink group-hover:text-xverse-red transition-colors">倉庫周辺のマップ表示</h2>
+                            <p class="text-slate-700 text-lg md:text-xl leading-loose mb-4 md:mb-8 font-normal">
+                                倉庫周囲のトラックヤードの表示なども行え、倉庫外と倉庫内のコンベアのレイアウト、周囲の道路標示にも対応しています。
+                            </p>
+                        </div>
+                        <div class="md:w-1/2 rounded-3xl overflow-hidden glass-card p-2 relative">
+                            <div class="absolute inset-0 bg-xverse-red-light/20 blur-3xl opacity-20 group-hover:opacity-40 transition-opacity duration-500"></div>
+                            <div class="rounded-2xl overflow-hidden aspect-video relative z-10">
+                                <img src="/assets/images/product_surroundings.png" alt="倉庫周辺マップ" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Value 03 -->
+                    <div class="bg-slate-50 border border-slate-200 rounded-[2.5rem] p-8 md:p-12 flex flex-col md:flex-row items-center gap-2 md:gap-16 animate-on-scroll platform-slide-left group shadow-sm hover:shadow-md transition-shadow duration-300">
+                        <div class="md:w-1/2">
+                            <h2 class="text-3xl font-bold mb-6 text-deep-ink group-hover:text-xverse-red transition-colors">選べる動作環境</h2>
+                            <p class="text-slate-700 text-lg md:text-xl leading-loose mb-4 md:mb-8 font-normal">
+                                X-VERSEは、ローカル環境、クラウド環境の何れでも動作が可能です。<br>
+                                クラウドにUPして共有したい場合、クラウドは不要でローカル環境で容易に共有したい場合など、ご利用者の環境に最適なプランでご提供可能です。
+                            </p>
+                        </div>
+                        <div class="md:w-1/2 rounded-3xl overflow-hidden glass-card p-2 relative">
+                            <div class="absolute inset-0 bg-purple-500/20 blur-3xl opacity-20 group-hover:opacity-40 transition-opacity duration-500"></div>
+                            <div class="rounded-2xl overflow-hidden aspect-video relative z-10">
+                                <img src="/assets/images/product_environments.png" alt="動作環境" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="py-24 relative overflow-hidden bg-slate-50">
+            <div class="absolute inset-0 bg-[url('/assets/patterns/grid.svg')] opacity-5 mix-blend-overlay"></div>
+
+            <div class="container mx-auto px-4 max-w-6xl relative z-10">
+                <div class="text-center mb-20 animate-on-scroll">
+                    <h2 class="text-sm font-bold text-xverse-red uppercase tracking-[0.3em] mb-6 glow-text">FEATURES</h2>
+                    <p class="text-4xl md:text-5xl font-light text-deep-ink mb-8 leading-tight">主要な機能</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="h-full glass-card p-10 rounded-3xl group hover:-translate-y-2 transition-all duration-300 relative overflow-hidden bg-white border border-slate-100 hover:border-xverse-red/30 hover:shadow-xl shadow-md animate-on-scroll" style="transition-delay: 0s;">
+                        <div class="absolute -right-10 -top-10 w-40 h-40 bg-xverse-red/5 rounded-full blur-3xl group-hover:bg-xverse-red/10 transition-all duration-500"></div>
+                        <div class="absolute right-4 bottom-4 text-[8rem] font-bold text-slate-100 select-none leading-none pointer-events-none">01</div>
+                        <div class="relative z-10">
+                            <h3 class="text-2xl font-bold mb-4 mt-4 text-deep-ink group-hover:text-xverse-red transition-colors">リアルタイム棚状況表示</h3>
+                            <p class="text-slate-600 text-lg leading-loose font-normal">
+                                棚の在庫状況をリアルタイム可視化表示
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="h-full glass-card p-10 rounded-3xl group hover:-translate-y-2 transition-all duration-300 relative overflow-hidden bg-white border border-slate-100 hover:border-xverse-red/30 hover:shadow-xl shadow-md animate-on-scroll" style="transition-delay: 0.1s;">
+                        <div class="absolute -right-10 -top-10 w-40 h-40 bg-xverse-red/5 rounded-full blur-3xl group-hover:bg-xverse-red/10 transition-all duration-500"></div>
+                        <div class="absolute right-4 bottom-4 text-[8rem] font-bold text-slate-100 select-none leading-none pointer-events-none">02</div>
+                        <div class="relative z-10">
+                            <h3 class="text-2xl font-bold mb-4 mt-4 text-deep-ink group-hover:text-xverse-red transition-colors">容易なレイアウト作成</h3>
+                            <p class="text-slate-600 text-lg leading-loose font-normal">
+                                CAD知識なしで、マグネット機能で簡単レイアウト作成
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="h-full glass-card p-10 rounded-3xl group hover:-translate-y-2 transition-all duration-300 relative overflow-hidden bg-white border border-slate-100 hover:border-xverse-red/30 hover:shadow-xl shadow-md animate-on-scroll" style="transition-delay: 0.2s;">
+                        <div class="absolute -right-10 -top-10 w-40 h-40 bg-xverse-red/5 rounded-full blur-3xl group-hover:bg-xverse-red/10 transition-all duration-500"></div>
+                        <div class="absolute right-4 bottom-4 text-[8rem] font-bold text-slate-100 select-none leading-none pointer-events-none">03</div>
+                        <div class="relative z-10">
+                            <h3 class="text-2xl font-bold mb-4 mt-4 text-deep-ink group-hover:text-xverse-red transition-colors">3Dモデルの読み込み（AI対応）</h3>
+                            <p class="text-slate-600 text-lg leading-loose font-normal">
+                                手持ちの3Dモデルを配置することも可能で、更に画像とAI指示により3Dモデルも生成し配置することもできます。
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="h-full glass-card p-10 rounded-3xl group hover:-translate-y-2 transition-all duration-300 relative overflow-hidden bg-white border border-slate-100 hover:border-xverse-red/30 hover:shadow-xl shadow-md animate-on-scroll" style="transition-delay: 0.3s;">
+                        <div class="absolute -right-10 -top-10 w-40 h-40 bg-xverse-red/5 rounded-full blur-3xl group-hover:bg-xverse-red/10 transition-all duration-500"></div>
+                        <div class="absolute right-4 bottom-4 text-[8rem] font-bold text-slate-100 select-none leading-none pointer-events-none">04</div>
+                        <div class="relative z-10">
+                            <h3 class="text-2xl font-bold mb-4 mt-4 text-deep-ink group-hover:text-xverse-red transition-colors">クラウド、ローカル環境に対応</h3>
+                            <p class="text-slate-600 text-lg leading-loose font-normal">
+                                クラウド型とインストーラー型が選択でき、マシンのスペックや利用シーンに合わせて選択できます。
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="h-full glass-card p-10 rounded-3xl group hover:-translate-y-2 transition-all duration-300 relative overflow-hidden bg-white border border-slate-100 hover:border-xverse-red/30 hover:shadow-xl shadow-md animate-on-scroll" style="transition-delay: 0.4s;">
+                        <div class="absolute -right-10 -top-10 w-40 h-40 bg-xverse-red/5 rounded-full blur-3xl group-hover:bg-xverse-red/10 transition-all duration-500"></div>
+                        <div class="absolute right-4 bottom-4 text-[8rem] font-bold text-slate-100 select-none leading-none pointer-events-none">05</div>
+                        <div class="relative z-10">
+                            <h3 class="text-2xl font-bold mb-4 mt-4 text-deep-ink group-hover:text-xverse-red transition-colors">倉庫外の景観も表示</h3>
+                            <p class="text-slate-600 text-lg leading-loose font-normal">
+                                トラックヤードや倉庫外スペースの表示も実際のマップ情報に重ね合わせて表示できます。
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="h-full glass-card p-10 rounded-3xl group hover:-translate-y-2 transition-all duration-300 relative overflow-hidden bg-white border border-slate-100 hover:border-xverse-red/30 hover:shadow-xl shadow-md animate-on-scroll" style="transition-delay: 0.5s;">
+                        <div class="absolute -right-10 -top-10 w-40 h-40 bg-xverse-red/5 rounded-full blur-3xl group-hover:bg-xverse-red/10 transition-all duration-500"></div>
+                        <div class="absolute right-4 bottom-4 text-[8rem] font-bold text-slate-100 select-none leading-none pointer-events-none">06</div>
+                        <div class="relative z-10">
+                            <h3 class="text-2xl font-bold mb-4 mt-4 text-deep-ink group-hover:text-xverse-red transition-colors">CADや3Dの経験不要</h3>
+                            <p class="text-slate-600 text-lg leading-loose font-normal">
+                                誰でも簡単に操作できるインターフェースで、専門知識がなくても直感的にレイアウトを作成できます。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="faq" class="py-24 bg-white relative">
+            <div class="container mx-auto px-4 max-w-4xl">
+                <h3 class="text-3xl font-bold text-center text-deep-ink mb-16 animate-on-scroll">よくある質問</h3>
+                <div class="space-y-6">
+                    <!-- FAQ 1 -->
+                    <div class="bg-white rounded-2xl p-8 shadow-sm border border-slate-100 animate-on-scroll" style="transition-delay: 0s;">
+                        <h4 class="text-xl font-bold text-deep-ink mb-4 flex items-start">
+                            <span class="text-xverse-red mr-3 italic">Q.</span>
+                            導入にはハイスペックなPCが必要ですか？
+                        </h4>
+                        <p class="text-slate-700 text-xl font-bold leading-loose pl-7">
+                            いいえ、一般的なブラウザ（Chrome/Edge等）が動作するWindows/Macやタブレットであれば問題なくご利用いただけます。
+                        </p>
+                    </div>
+                    <!-- FAQ 2 -->
+                    <div class="bg-white rounded-2xl p-8 shadow-sm border border-slate-100 animate-on-scroll" style="transition-delay: 0.15s;">
+                        <h4 class="text-xl font-bold text-deep-ink mb-4 flex items-start">
+                            <span class="text-xverse-red mr-3 italic">Q.</span>
+                            今使っているWMSのデータと連携できますか？
+                        </h4>
+                        <p class="text-slate-700 text-xl font-bold leading-loose pl-7">
+                            はい。CSVによる一括アップロードのほか、API連携により在庫数や出荷情報をリアルタイムに3D表示することが可能です。
+                        </p>
+                    </div>
+                    <!-- FAQ 3 -->
+                    <div class="bg-white rounded-2xl p-8 shadow-sm border border-slate-100 animate-on-scroll" style="transition-delay: 0.3s;">
+                        <h4 class="text-xl font-bold text-deep-ink mb-4 flex items-start">
+                            <span class="text-xverse-red mr-3 italic">Q.</span>
+                            現場の図面が古いのですが、作成できますか？
+                        </h4>
+                        <p class="text-slate-700 text-xl font-bold leading-loose pl-7">
+                            手書きの図面や画像ファイルからでも、ベースフロアとして読み込み、その上で現在の正確な棚配置を作成することが可能です。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+
+    </main>
+
+
+</Layout>

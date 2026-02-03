@@ -1,0 +1,93 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+
+---
+
+<Layout title="Contact | X-VERSE">
+    <Header currentService="logi" />
+
+    <main class="pt-20 min-h-screen">
+        <section class="py-20 relative text-deep-ink bg-slate-50">
+            <div class="absolute inset-0 bg-[url('/assets/patterns/grid.svg')] opacity-5 mix-blend-overlay"></div>
+
+            <div class="container mx-auto px-4 max-w-2xl relative z-10">
+                <h1 class="text-5xl font-thin mb-12 text-center tracking-tight animate-on-scroll">CONTACT</h1>
+
+                <div class="glass-card p-10 rounded-3xl border border-slate-200 animate-on-scroll">
+                    <form class="space-y-6" id="contact-form">
+                        <div>
+                            <label class="block text-sm font-bold mb-2 text-slate-600 tracking-wider">お問い合わせサービス <span class="text-xverse-red">*</span></label>
+                            <div class="relative">
+                                <select name="service_name" class="w-full border border-slate-300 rounded-xl px-4 py-3 bg-white text-deep-ink focus:ring-2 focus:ring-xverse-red outline-none appearance-none transition-all hover:bg-slate-100" required>
+                                    <option value="x-verse" class="bg-white text-deep-ink">X-VERSE</option>
+                                    <option value="x-verse-logi" selected class="bg-white text-deep-ink">X-VERSE Logi</option>
+                                </select>
+                                <div class="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-slate-500">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-bold mb-2 text-slate-600 tracking-wider">お問い合わせ種別 <span class="text-xverse-red">*</span></label>
+                                <div class="relative">
+                                    <select name="inquiry_type" class="w-full border border-slate-300 rounded-xl px-4 py-3 bg-white text-deep-ink focus:ring-2 focus:ring-xverse-red outline-none appearance-none transition-all hover:bg-slate-100" required>
+                                        <option value="" disabled selected class="text-slate-500">選択してください</option>
+                                        <option value="demo" class="bg-white">デモ依頼</option>
+                                        <option value="docs" class="bg-white">資料請求</option>
+                                        <option value="poc" class="bg-white">PoC相談</option>
+                                        <option value="pricing" class="bg-white">料金・プランについて</option>
+                                    </select>
+                                    <div class="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-slate-500">
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-bold mb-2 text-slate-600 tracking-wider">会社名 <span class="text-xverse-red">*</span></label>
+                                <input type="text" name="company_name" class="w-full border border-slate-300 rounded-xl px-4 py-3 bg-white text-deep-ink focus:ring-2 focus:ring-xverse-red outline-none transition-all hover:bg-slate-100 placeholder-gray-600" placeholder="株式会社〇〇" required />
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-bold mb-2 text-slate-600 tracking-wider">部署名</label>
+                                <input type="text" name="department" class="w-full border border-slate-300 rounded-xl px-4 py-3 bg-white text-deep-ink focus:ring-2 focus:ring-xverse-red outline-none transition-all hover:bg-slate-100 placeholder-gray-600" placeholder="企画開発部" />
+                            </div>
+                            <div>
+                                <label class="block text-sm font-bold mb-2 text-slate-600 tracking-wider">氏名 <span class="text-xverse-red">*</span></label>
+                                <input type="text" name="user_name" class="w-full border border-slate-300 rounded-xl px-4 py-3 bg-white text-deep-ink focus:ring-2 focus:ring-xverse-red outline-none transition-all hover:bg-slate-100 placeholder-gray-600" placeholder="山田 太郎" required />
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-bold mb-2 text-slate-600 tracking-wider">電話番号</label>
+                                <input type="tel" name="tel" class="w-full border border-slate-300 rounded-xl px-4 py-3 bg-white text-deep-ink focus:ring-2 focus:ring-xverse-red outline-none transition-all hover:bg-slate-100 placeholder-gray-600" placeholder="03-1234-5678" />
+                            </div>
+                            <div style="display:none;">
+                                <label>Leave this field empty</label>
+                                <input type="text" name="confirm_email" value="" />
+                            </div>
+                            <div>
+                                <label class="block text-sm font-bold mb-2 text-slate-600 tracking-wider">メールアドレス <span class="text-xverse-red">*</span></label>
+                                <input type="email" name="email" class="w-full border border-slate-300 rounded-xl px-4 py-3 bg-white text-deep-ink focus:ring-2 focus:ring-xverse-red outline-none transition-all hover:bg-slate-100 placeholder-gray-600" placeholder="example@domain.com" required />
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold mb-2 text-slate-600 tracking-wider">用途・ご相談内容</label>
+                            <textarea name="message" class="w-full border border-slate-300 rounded-xl px-4 py-3 bg-white text-deep-ink focus:ring-2 focus:ring-xverse-red outline-none h-32 transition-all hover:bg-slate-100 placeholder-gray-600" placeholder="検討中のプロジェクトの概要や、具体的なご相談内容をご記入ください。"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-gradient-to-r from-xverse-red to-xverse-red-light text-white py-4 rounded-xl font-bold text-lg hover:shadow-[0_0_30px_rgba(157,33,36,0.4)] transition-all duration-300 transform hover:-translate-y-1 relative overflow-hidden group">
+                            <span class="relative z-10">送信する</span>
+                            <div class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+
+    <script src="/scripts/contact.js" is:inline></script>
+</Layout>

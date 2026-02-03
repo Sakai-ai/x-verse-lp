@@ -1,16 +1,18 @@
 {
     "name": "x-verse-monorepo",
     "private": true,
-    "workspaces": [
-        "logi",
-        "shared",
-        "top"
-    ],
     "scripts": {
-        "sync:logi": "cd logi && npm run sync",
-        "build:logi": "cd logi && npm run build",
-        "build:top": "cd top && npm run build",
-        "build": "npm run build:logi && npm run sync:logi && npm run build:top",
-        "postbuild": "powershell -Command \"if (Test-Path dist) { Remove-Item -Recurse -Force dist }; New-Item -ItemType Directory -Force dist; Copy-Item -Recurse -Force top/public/* dist/\""
+        "dev": "astro dev",
+        "start": "astro dev",
+        "build": "astro build && node scripts/post-build.js",
+        "postbuild": "node scripts/post-build.js",
+        "preview": "astro preview",
+        "astro": "astro"
+    },
+    "dependencies": {
+        "@astrojs/tailwind": "^6.0.2",
+        "@tailwindcss/vite": "^4.1.18",
+        "astro": "^5.17.1",
+        "tailwindcss": "^4.1.18"
     }
 }
