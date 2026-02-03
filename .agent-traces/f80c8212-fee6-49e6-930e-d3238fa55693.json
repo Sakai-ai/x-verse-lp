@@ -1,0 +1,47 @@
+{
+  "version": "0.1.0",
+  "id": "f80c8212-fee6-49e6-930e-d3238fa55693",
+  "timestamp": "2026-02-03T02:50:54.505Z",
+  "vcs": {
+    "type": "git",
+    "revision": "808d701f98bb97c7f2a3f311fafde6ca47920b4e"
+  },
+  "files": [
+    {
+      "path": ".agent-traces/e8e19f8e-1821-48dc-8f12-c88494a3e0c3.json",
+      "conversations": [
+        {
+          "contributor": {
+            "type": "ai"
+          },
+          "ranges": [
+            {
+              "start_line": 1,
+              "end_line": 47
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "src/components/Header.astro",
+      "conversations": [
+        {
+          "contributor": {
+            "type": "ai"
+          },
+          "ranges": [
+            {
+              "start_line": 48,
+              "end_line": 48
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "message": "Use explicit style for header ruby offset (40px)",
+    "generator": "node-record-trace-script"
+  }
+}
