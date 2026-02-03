@@ -37,7 +37,7 @@ walkDir(distDir, (filePath) => {
         // href="/company/" -> href="./company/index.html"
 
         // まず href="/" を特殊対応
-        const indexPage = prefix === './' ? './index.html' : prefix + 'index.html';
+        const indexPage = prefix === './' ? './' : prefix;
         newContent = newContent.replace(/href="\/"/g, `href="${indexPage}"`);
 
         // その他の / で始まるパス
