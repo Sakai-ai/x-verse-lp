@@ -1,0 +1,47 @@
+{
+  "version": "0.1.0",
+  "id": "c1ab9229-6223-4f08-a5d2-9d875065ec8e",
+  "timestamp": "2026-02-03T02:16:03.926Z",
+  "vcs": {
+    "type": "git",
+    "revision": "9bc6607a8b07a7ad0f59a763ad4ca794fc8a4d99"
+  },
+  "files": [
+    {
+      "path": ".agent-traces/0436ccba-88c8-4f8b-8933-94f8ee2f8354.json",
+      "conversations": [
+        {
+          "contributor": {
+            "type": "ai"
+          },
+          "ranges": [
+            {
+              "start_line": 1,
+              "end_line": 75
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "scripts/post-build.js",
+      "conversations": [
+        {
+          "contributor": {
+            "type": "ai"
+          },
+          "ranges": [
+            {
+              "start_line": 40,
+              "end_line": 40
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "message": "Fix root links to remove index.html",
+    "generator": "node-record-trace-script"
+  }
+}

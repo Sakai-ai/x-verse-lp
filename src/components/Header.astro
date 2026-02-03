@@ -45,11 +45,11 @@ const rubyText = currentService === 'logi' ? 'クロスバース・ロジ' : '�
     <nav class="container mx-auto px-6 h-20 flex items-center justify-between">
         <div class="flex items-end group">
             <a href={currentService === 'logi' ? '/logi/' : '/'} class="transition-all duration-500 flex flex-col items-center">
-                <span class="text-[10px] text-slate-500 tracking-[0.15em] font-medium mb-0.5">{rubyText}</span>
                 <img src="/assets/images/logo.svg" alt="X-VERSE" class="h-8 w-auto" />
+                <span class="text-[10px] text-slate-500 tracking-[0.15em] font-medium mt-0.5">{rubyText}</span>
             </a>
             {currentService === 'logi' && (
-                <span class="ml-3 mb-1.5 px-2 py-1 text-xs font-bold text-white bg-xverse-red tracking-widest">Logi</span>
+                <span class="ml-3 mb-4 px-2 py-1 text-xs font-bold text-white bg-xverse-red tracking-widest">Logi</span>
             )}
         </div>
 
