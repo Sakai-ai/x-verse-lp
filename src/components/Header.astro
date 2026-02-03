@@ -11,19 +11,32 @@ const { currentService = 'top' } = Astro.props;
 // サービスごとのナビゲーション定義
 const navItems = {
     top: [
-        { name: '製品紹介', href: '/#products' },
-        { name: '主要機能', href: '/#features' },
+        { name: 'コンセプト', href: '#concept' },
+        { name: '業務例', href: '#use-cases' },
+        { name: '導入環境', href: '#deployment' },
+        { name: '製品紹介', href: '#products' },
         { name: '会社案内', href: '/company/' },
     ],
     logi: [
-        { name: '製品概要', href: '/logi/#product' },
-        { name: '主要機能', href: '/logi/#features' },
-        { name: 'FAQ', href: '/logi/#faq' },
+        { name: 'コンセプト', href: '#product' },
+        { name: '主要機能', href: '#features' },
+        { name: 'よくある質問', href: '#faq' },
+        { name: '製品紹介', href: '#products' },
+        { name: '会社案内', href: '/company/' },
     ],
 };
 
-const currentNav = navItems[currentService as keyof typeof navItems] || navItems.top;
+const pathname = Astro.url.pathname;
+const isIndexPage = pathname === '/' || pathname === '/index.html' || pathname === '/logi/' || pathname === '/logi' || pathname === '/logi/index.html';
+
+const currentNav = (navItems[currentService as keyof typeof navItems] || navItems.top).filter(item => {
+    // indexページ以外では特定のページ内アンカーリンクを非表示にする
+    const itemsToRemoveOnOtherPages = ['コンセプト', '業務例', '導入環境', '主要機能', 'よくある質問'];
+    if (itemsToRemoveOnOtherPages.includes(item.name) && !isIndexPage) return false;
+    return true;
+});
 const contactHref = currentService === 'logi' ? '/logi/contact/' : '/contact/';
+const rubyText = currentService === 'logi' ? 'クロスバース・ロジ' : 'クロスバース';
 ---
 
 <ServiceSwitcher currentService={currentService} />
@@ -32,7 +45,7 @@ const contactHref = currentService === 'logi' ? '/logi/contact/' : '/contact/';
     <nav class="container mx-auto px-6 h-20 flex items-center justify-between">
         <div class="flex items-end group">
             <a href={currentService === 'logi' ? '/logi/' : '/'} class="transition-all duration-500 flex flex-col items-center">
-                <span class="text-[10px] text-slate-500 tracking-[0.15em] font-medium mb-0.5">クロスバース</span>
+                <span class="text-[10px] text-slate-500 tracking-[0.15em] font-medium mb-0.5">{rubyText}</span>
                 <img src="/assets/images/logo.svg" alt="X-VERSE" class="h-8 w-auto" />
             </a>
             {currentService === 'logi' && (

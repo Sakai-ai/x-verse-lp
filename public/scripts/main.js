@@ -28,6 +28,14 @@ document.addEventListener('DOMContentLoaded', () => {
         mobileMenuButton.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
         });
+
+        // メニュー内のリンクをクリックしたら閉じる
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
     }
 
     // Local Environment Navigation Fix
