@@ -44,14 +44,14 @@ const rubyText = currentService === 'logi' ? 'クロスバース・ロジ' : '�
 <header class="fixed w-full z-40 glass transition-all duration-500" id="main-header" style="top: 40px;">
     <nav class="container mx-auto px-6 h-20 flex items-center justify-between">
         <div class="flex items-center group">
-            <a href={currentService === 'logi' ? '/logi/' : '/'} class="transition-all duration-500 flex flex-col items-center pt-1">
+            <a href={currentService === 'logi' ? '/logi/' : '/'} class="transition-all duration-500 relative flex flex-col items-start pt-3">
+                <span class="absolute top-0 left-[20px] text-[10px] text-slate-500 tracking-[0.15em] font-medium">{rubyText}</span>
                 <div class="flex items-center">
                     <img src="/assets/images/logo.svg" alt="X-VERSE" class="h-8 w-auto" />
                     {currentService === 'logi' && (
                         <span class="ml-3 px-2 py-0.5 text-xs font-bold text-white bg-xverse-red tracking-widest">Logi</span>
                     )}
                 </div>
-                <span class="text-[10px] text-slate-500 tracking-[0.15em] font-medium mt-0.5">{rubyText}</span>
             </a>
         </div>
 
