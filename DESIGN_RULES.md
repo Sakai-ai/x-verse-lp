@@ -10,10 +10,11 @@
 - **カラー**: `text-slate-700` (本文)
 - **用途**: セクションの説明文、パラグラフテキスト
 
-#### 小さい説明テキスト（Small Description）
-- **サイズ**: `text-sm` (14px)
-- **用途**: カードの補足説明、注釈
+#### カード内説明テキスト（Card Description）
+- **サイズ**: `text-lg` (18px)
+- **用途**: カード内の説明文
 - **カラー**: `text-slate-700` または `text-slate-600`
+- **行間**: `leading-relaxed`
 
 #### セクションタイトル
 - **大見出し (H2)**: `text-4xl md:text-5xl lg:text-6xl` (36px → 48px → 60px)
@@ -90,7 +91,7 @@
 ### 統一すべき箇所
 1. **本文テキスト**: 全ページで `text-lg md:text-xl` を使用
 2. **説明テキスト**: セクション説明には `text-xl` ではなく `text-lg md:text-xl`
-3. **カード内テキスト**: `text-sm` (カード内の小さい説明文)
+3. **カード内テキスト**: `text-lg` (カード内の説明文)
 
 ### ページ別の注意点
 - **index.astro**: Conceptセクション以降の説明文を `text-lg md:text-xl` に統一
