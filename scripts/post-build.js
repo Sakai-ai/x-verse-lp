@@ -41,23 +41,22 @@ walkDir(distDir, (filePath) => {
         newContent = newContent.replace(/href="\/"/g, `href="${indexPage}"`);
 
         // その他の / で始まるパス
-        // ハッシュ付きパス（例: /logi/#product -> ./logi/index.html#product）を先に処理
-        newContent = newContent.replace(/href="\/([^">#?]+)\/#([^"]+)"/g, `href="${prefix}$1/index.html#$2"`);
+        // ハッシュ付きパス（例: /logi/#product -> ./logi/#product）
+        newContent = newContent.replace(/href="\/([^">#?]+)\/#([^"]+)"/g, `href="${prefix}$1/#$2"`);
 
-        // 単純なハッシュリンク（例: /#features -> ./index.html#features）
-        // prefixが ./ の場合は ./index.html#features、それ以外は ../index.html#features
+        // 単純なハッシュリンク（例: /#features -> ./#features）
         newContent = newContent.replace(/href="\/#([^"]+)"/g, `href="${indexPage}#$1"`);
 
-        // パス末尾に / がある場合（ディレクトリ）
-        newContent = newContent.replace(/href="\/([^">#?]+)\/"/g, `href="${prefix}$1/index.html"`);
+        // パス末尾に / がある場合（ディレクトリ形式を維持）
+        newContent = newContent.replace(/href="\/([^">#?]+)\/"/g, `href="${prefix}$1/"`);
 
         // パス末尾に / がない場合（ファイルまたはディレクトリの可能性）
-        // 拡張子がない場合はディレクトリと見なして /index.html を付与
         newContent = newContent.replace(/href="\/([^">#?\/]+)"/g, (match, p1) => {
             if (p1.includes('.')) {
                 return `href="${prefix}${p1}"`;
             } else {
-                return `href="${prefix}${p1}/index.html"`;
+                // 拡張子がない場合はディレクトリとして扱う
+                return `href="${prefix}${p1}/"`;
             }
         });
 

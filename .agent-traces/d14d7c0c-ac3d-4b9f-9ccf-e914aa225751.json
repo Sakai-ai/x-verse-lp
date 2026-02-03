@@ -1,0 +1,107 @@
+{
+  "version": "0.1.0",
+  "id": "d14d7c0c-ac3d-4b9f-9ccf-e914aa225751",
+  "timestamp": "2026-02-03T02:02:17.837Z",
+  "vcs": {
+    "type": "git",
+    "revision": "c5e2bc39ba2c29dd4cfa2ba7b230ad0d7fa2a3e6"
+  },
+  "files": [
+    {
+      "path": "public/scripts/main.js",
+      "conversations": [
+        {
+          "contributor": {
+            "type": "ai"
+          },
+          "ranges": [
+            {
+              "start_line": 31,
+              "end_line": 38
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "src/components/Footer.astro",
+      "conversations": [
+        {
+          "contributor": {
+            "type": "ai"
+          },
+          "ranges": [
+            {
+              "start_line": 46,
+              "end_line": 46
+            },
+            {
+              "start_line": 49,
+              "end_line": 49
+            },
+            {
+              "start_line": 85,
+              "end_line": 85
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "src/components/Header.astro",
+      "conversations": [
+        {
+          "contributor": {
+            "type": "ai"
+          },
+          "ranges": [
+            {
+              "start_line": 14,
+              "end_line": 17
+            },
+            {
+              "start_line": 21,
+              "end_line": 25
+            },
+            {
+              "start_line": 29,
+              "end_line": 37
+            },
+            {
+              "start_line": 39,
+              "end_line": 39
+            },
+            {
+              "start_line": 48,
+              "end_line": 48
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "src/pages/index.astro",
+      "conversations": [
+        {
+          "contributor": {
+            "type": "ai"
+          },
+          "ranges": [
+            {
+              "start_line": 283,
+              "end_line": 283
+            },
+            {
+              "start_line": 342,
+              "end_line": 342
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "message": "Refine mobile menu UX, header navigation, and footer layout",
+    "generator": "node-record-trace-script"
+  }
+}
